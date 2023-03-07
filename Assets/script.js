@@ -105,13 +105,16 @@ function checkAnswer(event) {
 }
 
 //Aim of this code is to run end game function after start quiz is selected when no questions are annswered and the timer runs out
-var screenLogMouseEvent = document.querySelector("#screenLog");
-
 function timerLimits(event) {
   if (qIndex == quizQuestions[0] && timerCount <= 0) {
     endGame();
   }
 }
+
+screenLogMouseEvent.addEventListener("mousemove",timerLimits);
+
+
+
 
 function endGame() {
   timerElement.textContent = 0;
