@@ -53,8 +53,6 @@ padding: 5%;
 
 #options {
     text-align: center;
-
-   
 }
 
 #options:hover {
@@ -67,3 +65,4 @@ li {
     text-align: center;
     list-style: decimal inside none;
 }
+
