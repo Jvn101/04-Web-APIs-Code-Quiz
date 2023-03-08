@@ -8,10 +8,11 @@ var options = document.querySelector("#options");
 var answer = document.querySelector("#answer");
 var finish = document.querySelector("#finish");
 var finalScoreElement = document.querySelector("#score");
-var enterName = document.querySelector(".submit-button");
+var submitName = document.querySelector(".submit-button");
 var goBack = document.querySelector("#back-button");
-var nameInputOrig = document.querySelector("#name");
+var enterName = document.querySelector("#enterName");
 var screenLogMouseEvent = document.querySelector("#screenLog");
+var clearHighscores = document.querySelector("#clear-button");
 
 var timer;
 var timerCount;
@@ -60,7 +61,8 @@ function startTimer() {
 
     if (timerCount <= 0) {
       clearInterval(timer);
-      //ENDGAME
+      console.log("timer=0");
+      endGame();
     }
   }, 1000);
 }
@@ -104,17 +106,6 @@ function checkAnswer(event) {
   }
 }
 
-//Aim of this code is to run end game function after start quiz is selected when no questions are annswered and the timer runs out
-function timerLimits(event) {
-  if (qIndex == quizQuestions[0] && timerCount <= 0) {
-    endGame();
-  }
-}
-
-screenLogMouseEvent.addEventListener("mousemove",timerLimits);
-
-
-
 
 function endGame() {
   timerElement.textContent = 0;
@@ -123,40 +114,50 @@ function endGame() {
   answer.classList.add("hidden");
   quizList.classList.add("hidden");
   finish.classList.remove("hidden");
-  clearInterval(timerCount);
-  //localStorage.setItem("highscoreList", JSON.stringify(highscoreList));
 }
 
+
+
 function highscoreDisplayScreen() {
-  // if (event.target.matches("button")) {
-  // highscores.textContent = highscoresList;
-  //localStorage.setItem("highscores", highscoresList);
   highscoresDiv.classList.remove("hidden");
   finish.classList.add("hidden");
+
+  var scoreList = {
+    name: nameValue,
+    score: score,
+  };
+
+  //Store score list
+  var old = localStorage.getItem("highscoresFINAL");
+  if (old == null) old = "";
+
+  localStorage.setItem(
+    "highscoresFINAL",
+    [old] + [scoreList.name, scoreList.score]
+  );
+
+  highscoreList.textContent = localStorage.getItem("highscoresFINAL");
 }
+
+//highscoreList.textContent = JSON.parse(localStorage.getItem("highscoresFINAL"));
+//function displayScores() {
+// for (var i = 0; i < localStorage.length; i++){
+// highscoreList.textContent = localStorage.getItem(localStorage.key(i));
+
+// highscoreList.textContent = displayScores();
+
+//console.log("highscores");// do something with localStorage.getItem(localStorage.key(i));
+//}
+
+//var retrieveobject = JSON.parse(localStorage.getItem//("highscoresFINAL"));
+//console.log(retrieveobject);
+//}
 //let nameInput = document.querySelector("#name")
 //var name = nameInput.ariaValueMax.trim();
 
 //NOT COMPLETE - Working on storing name and scores to localstorage
 //JSON.parse(localStorage.getItem("highscoreList"));
 // }
-
-//var nameInput = nameInputOrig.value.trim();
-//if (nameInput !== "") {
-// var highscores =
-// JSON.parse(window.localStorage.getItem("highscoreList");
-
-// var newScore = {
-//  score: score,
-//  name: nameInput,
-// };
-
-// highscores.textContent = highscores;
-// save to localstorage
-//highscores.push(newScore);
-//window.localStorage.setItem(")ighscoreList", JSON.stringify(nweStore));
-// }
-//}
 
 function reset() {
   startButton.classList.remove("hidden");
@@ -166,14 +167,20 @@ function reset() {
   startButton.addEventListener("click", startQuiz);
   timerCount = 10;
   console.log(reset);
+  score = 0;
 }
 
-// Attach event listener to start button to call startGame function on click
+
 startButton.addEventListener("click", startQuiz);
 options.addEventListener("click", checkAnswer);
-
-enterName.addEventListener("click", highscoreDisplayScreen);
+submitName.addEventListener("click", highscoreDisplayScreen);
 goBack.addEventListener("click", reset);
+
+
+
+
+
+
 
 //IGNORE COMMENTED OUT CODE - Need bits and pieces to finish the assignment requirements
 //goBack.addEventListener("click", startQuiz); function {
@@ -226,3 +233,17 @@ goBack.addEventListener("click", reset);
 // endGame();
 //  }
 //};
+
+//scoreList.textContent = JSON.parse(localStorage.getItem("highscoresFINAL"));
+
+//CLEAR HIGHSCORES
+//function clearScores() {
+//if (clickon.clearHighscores) {
+//localStorage.removeItem("highscoresFinal");
+// }
+// };
+
+//clearHighscores.addEventListener("click", //clearScores);
+
+//clearInterval(timerCount);
+//localStorage.setItem("highscoreList", JSON.stringify(highscoreList));
