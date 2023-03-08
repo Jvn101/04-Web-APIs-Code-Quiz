@@ -21,7 +21,7 @@ The Quiz website includes a multitude of features including:
 # Website Link
 
  Link to the deployed site:
- [Jasmine's Portfolio](https://jvn101.github./)
+ [Javascript Coding Quiz](https://jvn101.github.io/04-Web-APIs-Code-Quiz/)
 
 ***
 ### Contact us
