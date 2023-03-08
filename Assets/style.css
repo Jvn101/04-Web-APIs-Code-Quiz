@@ -2,18 +2,32 @@ body {
     font-size:100%;
     min-height: 100vh;
     min-width: 100vw;
+    background-color: beige;
 
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    margin: 5%;
 }
 
 button {
-    display: inline-block;
-    color: purple;
-    margin: 16px 16px 16px 20px;
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
+  display: inline-block;
+  color: purple;
+  margin: 16px 16px 16px 20px;
+  background-color: rgb(187, 175, 199);
 }
 
+
+button.start-button {
+    justify-content: center; 
+    align-items: center;
+    size: 200%;
+}
 
 .timer {
     position: absolute;
@@ -25,6 +39,31 @@ button {
     display: none;
 }
 
+
+
+#title {
+font-weight: bold;
+font-size: 2.0em;
+line-height: 1.2;
+font-family: Arial, sans-serif;
+text-align: center;
+padding: 5%;
+
+}
+
 #options {
-    border: 3px solid red;
+    text-align: center;
+
+   
+}
+
+#options:hover {
+    box-shadow: 10px 10px 40px 1px rgb(215, 121, 211);
+    opacity: 0.7;
+}
+
+li {
+    font-size: 150%;
+    text-align: center;
+    list-style: decimal inside none;
 }
