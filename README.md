@@ -13,9 +13,7 @@ The Quiz website includes a multitude of features including:
  * The quiz ends once all the questions are answered or the timer count equals 0 <br />
  * The user inputs their name and the name and score are saved in local storage <br />
  * The highscore values are saved, but can be permananetly removed by clicking clear highscores button <br />
- 
- # Finished Quiz Page
- ![Finished Quiz Page](Assets/Images/Finished-Quiz-Page copy.png) 
+
  
  # Highscore List
  ![Highscore List](Assets/Images/Highscore-List.png) 
