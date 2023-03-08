@@ -106,7 +106,6 @@ function checkAnswer(event) {
   }
 }
 
-
 function endGame() {
   timerElement.textContent = 0;
   finalScore = score;
@@ -116,11 +115,12 @@ function endGame() {
   finish.classList.remove("hidden");
 }
 
-
-
 function highscoreDisplayScreen() {
   highscoresDiv.classList.remove("hidden");
+ 
   finish.classList.add("hidden");
+
+  var nameValue = enterName.value.trim();
 
   var scoreList = {
     name: nameValue,
@@ -128,36 +128,42 @@ function highscoreDisplayScreen() {
   };
 
   //Store score list
-  var old = localStorage.getItem("highscoresFINAL");
-  if (old == null) old = "";
+  var old = JSON.parse(localStorage.getItem("highscoresFINAL")) || [];
+  //if (old == null) old = "";
+  old.push(scoreList);
 
-  localStorage.setItem(
-    "highscoresFINAL",
-    [old] + [scoreList.name, scoreList.score]
-  );
+  localStorage.setItem("highscoresFINAL", JSON.stringify(old));
 
-  highscoreList.textContent = localStorage.getItem("highscoresFINAL");
+  // localStorage.setItem(
+  //"highscoresFINAL",
+  //[old] + [scoreList.name, scoreList.score]
+  //);
+
+  var ABC = JSON.parse(localStorage.getItem("highscoresFINAL"));
+
+  //localStorage.setitem("highscoresFINAL", null)
+  for (var i = 0; i < ABC.length; i++) {
+    //highscoreList.textContent = localStorage.getItem(localStorage.key(i));
+
+    var store = document.createElement("li");
+    store.textContent = `${ABC[i].name}: ${ABC[i].score}`;
+    highscoreList.appendChild(store);
+  }
+}
+//function clearScores() {
+//localStorage.removeItem("highscoresFINAL");
+
+//console.log("clear HS")
+//clearHighscores.addEventListener("click", clearScores);
+
+function clearScores() {
+  localStorage.clear();
+  window.location.reload();
+ //highscoreList.classList.add("hidden");
+  //localStorage.removeItem("highscoresFINAL");
 }
 
-//highscoreList.textContent = JSON.parse(localStorage.getItem("highscoresFINAL"));
-//function displayScores() {
-// for (var i = 0; i < localStorage.length; i++){
-// highscoreList.textContent = localStorage.getItem(localStorage.key(i));
-
-// highscoreList.textContent = displayScores();
-
-//console.log("highscores");// do something with localStorage.getItem(localStorage.key(i));
-//}
-
-//var retrieveobject = JSON.parse(localStorage.getItem//("highscoresFINAL"));
-//console.log(retrieveobject);
-//}
-//let nameInput = document.querySelector("#name")
-//var name = nameInput.ariaValueMax.trim();
-
-//NOT COMPLETE - Working on storing name and scores to localstorage
-//JSON.parse(localStorage.getItem("highscoreList"));
-// }
+clearHighscores.addEventListener("click", clearScores);
 
 function reset() {
   startButton.classList.remove("hidden");
@@ -170,17 +176,10 @@ function reset() {
   score = 0;
 }
 
-
 startButton.addEventListener("click", startQuiz);
 options.addEventListener("click", checkAnswer);
 submitName.addEventListener("click", highscoreDisplayScreen);
 goBack.addEventListener("click", reset);
-
-
-
-
-
-
 
 //IGNORE COMMENTED OUT CODE - Need bits and pieces to finish the assignment requirements
 //goBack.addEventListener("click", startQuiz); function {
@@ -247,3 +246,23 @@ goBack.addEventListener("click", reset);
 
 //clearInterval(timerCount);
 //localStorage.setItem("highscoreList", JSON.stringify(highscoreList));
+
+//highscoreList.textContent = JSON.parse(localStorage.getItem("highscoresFINAL"));
+//function displayScores() {
+// for (var i = 0; i < localStorage.length; i++){
+// highscoreList.textContent = localStorage.getItem(localStorage.key(i));
+
+// highscoreList.textContent = displayScores();
+
+//console.log("highscores");// do something with localStorage.getItem(localStorage.key(i));
+//}
+
+//var retrieveobject = JSON.parse(localStorage.getItem//("highscoresFINAL"));
+//console.log(retrieveobject);
+//}
+//let nameInput = document.querySelector("#name")
+//var name = nameInput.ariaValueMax.trim();
+
+//NOT COMPLETE - Working on storing name and scores to localstorage
+//JSON.parse(localStorage.getItem("highscoreList"));
+// }
