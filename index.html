@@ -5,12 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Javascript Coding Quiz</title>
-
-    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./Assets/style.css" />
   </head>
 
-  <body>
-  
-        
-    </body>
-    </html>
+  <body id="screenLog">
+    <h1>Quiz</h1>
+    <button class="start-button">Start</button>
+
+    <div class="Questions hidden">
+      <h2 id="title"></h2>
+      <ul id="options">
+        <button id="option1">option1</button>
+        <button id="option2">option2</button>
+        <button id="option3">option3</button>
+        <button id="option4">option4</button>
+      </ul>
+    </div>
+
+    <div>
+      <button id="answer" class="hidden"></button>
+    </div>
+
+    <div class="timer">
+      <div class="timer-text">
+        <div class="large-font timer-count">10</div>
+        <h3>seconds remaining</h3>
+      </div>
+    </div>
+
+    <div id="finish" class="hidden">
+      <h2>Finished Quiz</h2>
+      <p>final score: <span id="score"></span></p>
+      <label> Enter name </label>
+      <input type="text" id="name" />
+      <button class="submit-button">submit</button>
+    </div>
+
+    <div class="highscores hidden">
+      <h1>Highscore List</h1>
+      <ul id="highscoreList"></ul>
+      <!-- add highscores page/element, should I do this as a list-->
+      <!-- <h1table of highscores class="card results"</h1>
+    <div > -->
+      <h2 id="finalscore"></h2>
+      <button id="back-button">Go Back</button>
+      <button id="clear-button">clear highscores</button>
+    </div>
+
+    <script src="Assets/script.js"></script>
+  </body>
+</html>
